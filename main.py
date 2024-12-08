@@ -4,13 +4,11 @@
 # Web: jatomixo.com
 
 from datetime import datetime
-import time
 import requests as req
 import json
 import gpiozero as gpio
 
 DOWNLOAD_TIME = [0, 1, 0]
-SLEEP_TIME = 2
 FILE_DATA_PATH = "data.json"
 CHEAPEST_HOURS_QUANTITY = 3
 RELAY = gpio.OutputDevice(17, active_high=False, initial_value=True)
@@ -73,12 +71,10 @@ def get_cheap_hours():
 
 def turn_on_relay():
     RELAY.off()
-    print("on")
 
 
 def turn_off_relay():
     RELAY.on()
-    print("off")
 
 
 create_data_file()
@@ -102,4 +98,3 @@ def main():
 if __name__ == "__main__":
     while True:
         main()
-        time.sleep(SLEEP_TIME)
